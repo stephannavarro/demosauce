@@ -1,5 +1,5 @@
 ---
-- hosts: powervc17
+- hosts: 10.3.54.17
   gather_facts: false
   user: root
   tasks:
@@ -39,7 +39,7 @@
       
   - name: assigin  role to project
     os_user_role:
-      cloud: powervc17
+      cloud: 10.3.54.17
       user: "{{demowas_user}}"
       role:  "{{item}}" 
       project: demo_ansible_was
@@ -48,7 +48,7 @@
 
 
   
-- hosts: control
+- hosts: 10.3.60.101
   gather_facts: false
   user: root
   #vars:
