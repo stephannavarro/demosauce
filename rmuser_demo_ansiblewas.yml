@@ -1,0 +1,52 @@
+---
+- hosts: localhost
+  gather_facts: true 
+  vars:
+    roles_list:
+      - vm_user         
+      - deployer        
+      - image_manager   
+      - storage_manager 
+      - vm_manager      
+      - self_service      
+
+  tasks:
+
+  - name: removing role from  project
+    os_user_role:
+      state: absent
+      cloud: powervc17
+      user: "{{ demowas_user }}"
+      role: "{{ item }}"
+      project: demo_ansible_was
+    loop: "{{ roles_list }}"
+
+
+- hosts: powervc17
+  gather_facts: false
+  user: root
+  tasks:
+  - name: deleting user
+    user:
+      state: absent 
+      name: "{{ demowas_user }}"
+      force: yes 
+  - name: deleting home directory for user "{{ demowas_user }}"
+    file: 
+      path: "/home/{{ demowas_user }}"
+      state: absent
+  
+- hosts: control
+  gather_facts: false
+  user: root
+  tasks:
+
+  - name: deleting 
+    user:
+      state: absent 
+      name: "{{ demowas_user }}"
+      force: yes 
+  - name: deleting home directory for user "{{ demowas_user }}"
+    file: 
+      path: "/home/{{ demowas_user }}"
+      state: absent
