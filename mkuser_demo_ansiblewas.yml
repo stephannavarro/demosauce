@@ -27,19 +27,10 @@
       - vm_manager
 
   tasks:
-          #- name: Authenticate to the cloud and retrieve the service catalog
-    #os_auth:
-    #cloud: powervc17
-    #- os_project_info:
-    #cloud: powervc17
-    #name: demo_ansible_was
-    #register: result
-    #- debug:
-    #msg: "{{ result.openstack_projects }}"
       
   - name: assigin  role to project
     os_user_role:
-      cloud: 10.3.54.17
+      cloud: devstack
       user: "{{demowas_user}}"
       role:  "{{item}}" 
       project: demo_ansible_was
