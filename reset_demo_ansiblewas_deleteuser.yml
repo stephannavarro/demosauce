@@ -16,7 +16,7 @@
     os_user_role:
       state: absent
       cloud: devstack
-      user: "{{ demowas_user }}"
+      user: "{{ user_name }}"
       role: "{{ item }}"
       project: snproject 
     loop: "{{ roles_list }}"
@@ -30,11 +30,11 @@
   - name: deleting user
     user:
       state: absent 
-      name: "{{ demowas_user }}"
+      name: "{{ user_name }}"
       force: yes 
-  - name: deleting home directory for user "{{ demowas_user }}"
+  - name: deleting home directory for user "{{ user_name }}"
     file: 
-      path: "/home/{{ demowas_user }}"
+      path: "/home/{{ user_name }}"
       state: absent
   
 - hosts: linuxVM
@@ -45,9 +45,9 @@
   - name: deleting 
     user:
       state: absent 
-      name: "{{ demowas_user }}"
+      name: "{{ user_name }}"
       force: yes 
-  - name: deleting home directory for user "{{ demowas_user }}"
+  - name: deleting home directory for user "{{ user_name }}"
     file: 
-      path: "/home/{{ demowas_user }}"
+      path: "/home/{{ user_name }}"
       state: absent
