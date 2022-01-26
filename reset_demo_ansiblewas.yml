@@ -15,10 +15,12 @@
   - name: listing all VMs
     os_server_info:
       cloud: devstack
+      project: snproject 
       #filters:
       #  vm_state: active
     register: vm
     tags: deletevm
+
 
   - debug:
       msg: "{{ vm | json_query('openstack_servers[*].{name: name}')  }}"
