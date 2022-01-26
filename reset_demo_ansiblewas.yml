@@ -15,7 +15,6 @@
   - name: listing all VMs
     os_server_info:
       cloud: devstack
-      project: snproject 
       #filters:
       #  vm_state: active
     register: vm
