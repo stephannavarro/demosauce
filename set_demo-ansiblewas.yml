@@ -32,7 +32,7 @@
       cloud: devstack
       user: "{{ user_name}}"
       role:  "{{item}}" 
-      project: radardemo
+      project: snproject
       state: present
     loop: "{{ roles_list }}"
 
