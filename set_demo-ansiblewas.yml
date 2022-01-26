@@ -1,22 +1,21 @@
 ---
-- hosts: 10.3.54.17
-  gather_facts: false
+- hosts: PowerVCHost
+  gather_facts: False
   user: root
   tasks:
 
   - name: creating user / changing password
     user:
       state: present
-      name: "{{ demowas_user }}"
+      name: "{{ user_name }}"
       groups: powervc-filter
-      #generate_ssh_key: yes
-      #ssh_key_bits: 1024
-      #ssh_key_file: .ssh/id_rsa
-      password: "{{ 'ansiblewas' | password_hash('sha512') }}"
+      generate_ssh_key: yes
+      ssh_key_bits: 1024
+      ssh_key_file: .ssh/id_rsa
+      password: "{{  user_password | password_hash('sha512') }}"
 
 - hosts: localhost
-  gather_facts: true 
-  #user: steph
+  gather_facts: False 
   vars:
     roles_list: 
       - vm_user
@@ -31,22 +30,18 @@
   - name: assigin  role to project
     os_user_role:
       cloud: devstack
-      user: "{{demowas_user}}"
+      user: "{{ user_name}}"
       role:  "{{item}}" 
-      project: demo_ansible_was
+      project: radardemo
       state: present
     loop: "{{ roles_list }}"
 
 
   
-- hosts: 10.3.60.101
-  gather_facts: false
+- hosts: LinuxVM
+  gather_facts: False
   user: root
-  #vars:
-  #user_name_for_list: was
-  #number_of_users: 2
   tasks:
-
 
   - name: creating groupd
     group: 
@@ -54,10 +49,10 @@
   - name: creating user / changing password
     user:
       state: present
-      name: "{{ demowas_user }}"
+      name: "{{ user_name }}"
       groups: demowas_user
       generate_ssh_key: yes
       ssh_key_bits: 1024
       ssh_key_file: .ssh/id_rsa
-      password: "{{ 'ansiblewas' | password_hash('sha512') }}"
+      password: "{{ user_password | password_hash('sha512') }}"
 
