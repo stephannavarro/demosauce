@@ -33,7 +33,7 @@
 
   - name: deleting all VMs and disks
     os_server:
-      cloud: powervc10_snproject
+      cloud: devstack
       timeout: 900
       state: absent
       name: "{{ item.name }}"
@@ -44,7 +44,7 @@
 
   - name: deleting disks
     os_volume:
-      cloud: powervc10_snproject
+      cloud: devstack
       display_name:  "{{item}}"
       state: absent
       wait: no
