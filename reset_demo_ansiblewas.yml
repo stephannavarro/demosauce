@@ -30,46 +30,24 @@
       msg: "{{ vm | json_query('openstack_servers[*].{name: name, volumes: volumes} ')  }}"
     tags: deletevm
 
-  - meta: end_play 
 
-  - name: removing role from  project
-    os_user_role:
+  - name: deleting all VMs and disks
+    os_server:
+      cloud: powervc10_snproject
+      timeout: 900
       state: absent
-      cloud: devstack
-      user: "{{ demowas_user }}"
-      role: "{{ item }}"
-      project: snproject 
-    loop: "{{ roles_list }}"
+      name: "{{ item.name }}"
+      terminate_volume: no
+      wait: yes
+    tags: deletevm
+    with_items :  "{{ vm | json_query('openstack_servers[*].{name: name}')  }}"
 
-
-- hosts: powervc17
-  gather_facts: false
-  user: root
-  tasks:
-  - meta: end_play
-
-  - name: deleting user
-    user:
-      state: absent 
-      name: "{{ demowas_user }}"
-      force: yes 
-  - name: deleting home directory for user "{{ demowas_user }}"
-    file: 
-      path: "/home/{{ demowas_user }}"
+  - name: deleting disks
+    os_volume:
+      cloud: powervc10_snproject
+      display_name:  "{{item}}"
       state: absent
-  
-- hosts: control
-  gather_facts: false
-  user: root
-  tasks:
-  - meta: end_play
+      wait: no
+    tags: deletedisks , deletevm
+    with_items: "{{ vm| json_query('openstack_servers[*].volumes[*].id') }}"
 
-  - name: deleting 
-    user:
-      state: absent 
-      name: "{{ demowas_user }}"
-      force: yes 
-  - name: deleting home directory for user "{{ demowas_user }}"
-    file: 
-      path: "/home/{{ demowas_user }}"
-      state: absent
