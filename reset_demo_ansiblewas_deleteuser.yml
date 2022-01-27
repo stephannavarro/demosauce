@@ -37,7 +37,7 @@
       path: "/home/{{ user_name }}"
       state: absent
   
-- hosts: linuxVM
+- hosts: LinuxVM
   gather_facts: False
   user: root
   tasks:
