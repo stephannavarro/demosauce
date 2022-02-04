@@ -35,6 +35,8 @@
       project: snproject
       state: present
     loop: "{{ roles_list }}"
+    loop_control:
+      pause: 3
 
 
   
