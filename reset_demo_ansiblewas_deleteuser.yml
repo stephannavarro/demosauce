@@ -8,7 +8,7 @@
       - image_manager   
       - storage_manager 
       - vm_manager      
-      - self_service      
+      #- self_service      
 
   tasks:
 

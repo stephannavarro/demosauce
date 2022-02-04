@@ -20,7 +20,7 @@
     roles_list: 
       - vm_user
       - deployer
-      - self_service
+      #- self_service
       - image_manager
       - storage_manager
       - vm_manager
