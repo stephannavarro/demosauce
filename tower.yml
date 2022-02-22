@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  remote_user: awx
+  #script to run as source powervcrc to be able to run nova command ##
+  gather_facts: yes
+  tasks: 
+  - name: creting user / Changing password
+    tower_user: 
+      username: "{{user_name}}"
+      password: "{{user_password}}"
+      email: toto@toto.fr
+      state: present
+      #tower_config_file: "~/.tower_cli.cfg"
+      tower_host: https://10.3.44.45
+      tower_password: ansible1234
+      tower_username: admin
+      validate_certs: no
+         
