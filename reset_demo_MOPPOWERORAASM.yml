@@ -23,7 +23,7 @@
 
 
 - name: reseting user password 
-  hosts: localhost
+  hosts: awx
   gather_facts: False 
   user: awx
   vars: 
