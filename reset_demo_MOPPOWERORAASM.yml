@@ -22,7 +22,7 @@
 
 - hosts: localhost
   gather_facts: False 
-  wars: 
+  vars: 
     user_password: snpassword
 
   roles:
