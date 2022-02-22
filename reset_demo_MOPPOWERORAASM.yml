@@ -22,7 +22,8 @@
 
 
 
-- hosts: localhost
+- name: reseting user password 
+  hosts: localhost
   gather_facts: False 
   user: awx
   vars: 
