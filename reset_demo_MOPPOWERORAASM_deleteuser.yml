@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  gather_facts: False 
+  vars:
+    roles_list:
+      - vm_user         
+      - deployer        
+      - image_manager   
+      - storage_manager 
+      - vm_manager      
+      #- self_service      
+
+  tasks:
+
+  - name: removing role from  project
+    os_user_role:
+      state: absent
+      cloud: devstack
+      user: "{{ user_name }}"
+      role: "{{ item }}"
+      project: OracleASMProject 
+    loop: "{{ roles_list }}"
+
+
+- hosts: PowerVCHost
+  gather_facts: false
+  user: root
+  tasks:
+
+  - name: deleting user
+    user:
+      state: absent 
+      name: "{{ user_name }}"
+      force: yes 
+  - name: deleting home directory for user "{{ user_name }}"
+    file: 
+      path: "/home/{{ user_name }}"
+      state: absent
+  
