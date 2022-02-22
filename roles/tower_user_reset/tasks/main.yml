@@ -8,7 +8,7 @@
 
   - name: Setting password for ansiblewasuser
     script: 
-      cmd: "files/chansiblewas_password.sh ansible {{ user_password }}"
+      cmd: "files/chansiblewas_password.sh ansiblewas {{ user_password }}"
 
 
   
