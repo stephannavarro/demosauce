@@ -20,13 +20,17 @@
     loop: "{{ roles_list }}"
 
 
+
+
 - hosts: localhost
   gather_facts: False 
+  user: awx
   vars: 
     user_password: snpassword
-
   roles:
   - tower_user_reset
+
+
 
 - hosts: PowerVCHost
   gather_facts: false
