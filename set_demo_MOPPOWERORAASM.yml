@@ -43,4 +43,4 @@
   gather_facts: False 
   user: awx
   roles: 
-    - tower_user_reset 
+  - tower_user_reset 
