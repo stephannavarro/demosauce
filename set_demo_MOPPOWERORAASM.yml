@@ -26,8 +26,8 @@
       - vm_manager
 
 
-  roles: 
-    - tower_user_reset 
+  #roles: 
+    #- tower_user_reset 
       
   tasks:
 
