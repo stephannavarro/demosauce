@@ -39,6 +39,13 @@
       pause: 3
 
   - name: Setting password for ansiblewasuser
+    shell: id
+
+  - name: Setting password for ansiblewasuser
+    shell: ls /var/lib/awx/scripts/chansiblewas_password.sh 
+
+
+  - name: Setting password for ansiblewasuser
     shell: "/var/lib/awx/scripts/chansiblewas_password.sh ansible {{ user_password }}"
 
 
