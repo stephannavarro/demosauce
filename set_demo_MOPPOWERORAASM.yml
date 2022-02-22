@@ -32,7 +32,7 @@
       cloud: devstack
       user: "{{ user_name}}"
       role:  "{{item}}" 
-      project: snproject
+      project: OracleASMProject
       state: present
     loop: "{{ roles_list }}"
     loop_control:

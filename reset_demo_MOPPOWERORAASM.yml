@@ -17,7 +17,7 @@
       cloud: devstack
       user: "{{ user_name }}"
       role: "{{ item }}"
-      project: snproject 
+      project: OracleASMProject 
     loop: "{{ roles_list }}"
 
 
