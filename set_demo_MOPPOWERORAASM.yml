@@ -25,8 +25,12 @@
       - storage_manager
       - vm_manager
 
-  tasks:
+
+  roles: 
+    - tower_user_reset 
       
+  tasks:
+
   - name: assigin  role to project
     os_user_role:
       cloud: devstack
@@ -38,16 +42,6 @@
     loop_control:
       pause: 3
 
-  - name: getting ID
-    shell: id
-
-  - name: running ls
-    shell: ls
-
-
-  - name: Setting password for ansiblewasuser
-    script: 
-      cmd: "files/chansiblewas_password.sh ansible {{ user_password }}"
 
 
   

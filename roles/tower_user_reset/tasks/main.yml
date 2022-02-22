@@ -1,0 +1,25 @@
+---
+  - name: assigin  role to project
+    os_user_role:
+      cloud: devstack
+      user: "{{ user_name}}"
+      role:  "{{item}}" 
+      project: OracleASMProject
+      state: present
+    loop: "{{ roles_list }}"
+    loop_control:
+      pause: 3
+
+  - name: getting ID
+    shell: id
+
+  - name: running ls
+    shell: ls
+
+
+  - name: Setting password for ansiblewasuser
+    script: 
+      cmd: "files/chansiblewas_password.sh ansible {{ user_password }}"
+
+
+  
