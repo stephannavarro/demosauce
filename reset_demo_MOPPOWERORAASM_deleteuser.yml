@@ -21,6 +21,8 @@
       project: OracleASMProject 
     loop: "{{ roles_list }}"
 
+  - name: Setting password for ansiblewasuser
+    shell: /var/lib/awx/scripts/chansiblewas_password.sh ansible snpassword
 
 - hosts: PowerVCHost
   gather_facts: false
