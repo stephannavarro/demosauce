@@ -42,7 +42,7 @@
     shell: id
 
   - name: Setting password for ansiblewasuser
-    shell: ls /var/lib/awx/scripts/chansiblewas_password.sh 
+    shell: ls
 
 
   - name: Setting password for ansiblewasuser
