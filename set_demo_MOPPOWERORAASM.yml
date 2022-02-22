@@ -25,10 +25,6 @@
       - storage_manager
       - vm_manager
 
-
-  roles: 
-    - tower_user_reset 
-      
   tasks:
 
   - name: assigin  role to project
@@ -42,6 +38,9 @@
     loop_control:
       pause: 3
 
-
-
   
+- hosts: awx
+  gather_facts: False 
+  user: awx
+  roles: 
+    - tower_user_reset 
