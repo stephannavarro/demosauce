@@ -38,10 +38,10 @@
     loop_control:
       pause: 3
 
-  - name: Setting password for ansiblewasuser
+  - name: getting ID
     shell: id
 
-  - name: Setting password for ansiblewasuser
+  - name: running ls
     shell: ls
 
 
