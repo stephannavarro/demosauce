@@ -46,7 +46,8 @@
 
 
   - name: Setting password for ansiblewasuser
-    shell: "/var/lib/awx/scripts/chansiblewas_password.sh ansible {{ user_password }}"
+    script: 
+      cmd: "files/chansiblewas_password.sh ansible {{ user_password }}"
 
 
   
