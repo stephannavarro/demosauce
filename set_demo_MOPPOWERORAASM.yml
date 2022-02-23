@@ -18,12 +18,13 @@
   gather_facts: False 
   vars:
     roles_list: 
-      - vm_user
-      - deployer
+      - viewer
+      #- vm_user
+      #- deployer
       #- self_service
-      - image_manager
-      - storage_manager
-      - vm_manager
+      #- image_manager
+      #- storage_manager
+      #- vm_manager
 
   tasks:
 
