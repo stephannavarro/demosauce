@@ -1,9 +1,9 @@
 ---
-  - name: getting ID
-    shell: id
+  #- name: getting ID
+    #shell: id
 
-  - name: running ls
-    shell: ls
+  #- name: running ls
+    #shell: ls
 
 
   - name: Setting password for ansiblewasuser
